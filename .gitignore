@@ -1,3 +1,9 @@
+# .NET Core build folders
+bin/
+obj/
+tmp
+build
+
 # Logs
 logs
 *.log

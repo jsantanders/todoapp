@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option csharp_namespace = "TodoApp.Services.Todo";
+
+package todoapp.todo;
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+service Todos {
+    rpc List(google.protobuf.Empty) returns (ListReply) {
+      option (google.api.http) = {
+        get: '/todo'
+      };
+    }
+  
+    rpc Get(GetRequest) returns (Todo) {
+      option (google.api.http) = {
+        get: '/todo/{name}'
+      };
+    }
+  
+    rpc Create(Todo) returns (Todo) {
+      option (google.api.http) = {
+        post: '/todo'
+        body: '*'
+      };
+    }
+  
+    rpc Update(Todo) returns (Todo) {
+      option (google.api.http) = {
+        put: '/todo/{name}'
+        body: '*'
+      };
+    }
+  
+    rpc Delete(DeleteRequest) returns (google.protobuf.Empty) {
+      option (google.api.http) = {
+        delete: '/todo/{name}'
+      };
+    }
+}
+  
+message Todo{
+    string name = 1;
+    string text = 2;
+    bool done = 3;
+}
+
+message ListReply {
+    repeated Todo todos = 1;
+}
+  
+message GetRequest {
+    string name = 1;
+}
+
+message DeleteRequest {
+    string name = 1;
+}

@@ -1,0 +1,7 @@
+**/bin
+**/obj
+tmp
+node_modules
+.git
+frontend
+.yarn
