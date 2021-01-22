@@ -42,7 +42,7 @@ service Todos {
 }
   
 message Todo{
-    string name = 1;
+    int32 name = 1;
     string text = 2;
     bool done = 3;
 }
